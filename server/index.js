@@ -17,6 +17,10 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.get("/api/temperature-data/refresh", async (req, res) => {
   let process = spawn("python", ["./population_temperatures.py"]);
   process.stdout.on("data", (data) => {
