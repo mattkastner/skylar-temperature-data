@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/skylar-temperature-data/static/css/main.8d15c66d.chunk.css",
+    "main.js": "/skylar-temperature-data/static/js/main.d106deab.chunk.js",
+    "main.js.map": "/skylar-temperature-data/static/js/main.d106deab.chunk.js.map",
+    "runtime-main.js": "/skylar-temperature-data/static/js/runtime-main.fd42d5ea.js",
+    "runtime-main.js.map": "/skylar-temperature-data/static/js/runtime-main.fd42d5ea.js.map",
+    "static/js/2.dec6ffb0.chunk.js": "/skylar-temperature-data/static/js/2.dec6ffb0.chunk.js",
+    "static/js/2.dec6ffb0.chunk.js.map": "/skylar-temperature-data/static/js/2.dec6ffb0.chunk.js.map",
+    "static/js/3.b2b5ceb8.chunk.js": "/skylar-temperature-data/static/js/3.b2b5ceb8.chunk.js",
+    "static/js/3.b2b5ceb8.chunk.js.map": "/skylar-temperature-data/static/js/3.b2b5ceb8.chunk.js.map",
+    "index.html": "/skylar-temperature-data/index.html",
+    "static/css/main.8d15c66d.chunk.css.map": "/skylar-temperature-data/static/css/main.8d15c66d.chunk.css.map",
+    "static/js/2.dec6ffb0.chunk.js.LICENSE.txt": "/skylar-temperature-data/static/js/2.dec6ffb0.chunk.js.LICENSE.txt",
+    "static/media/skylar_capital_management.9dd16507.png": "/skylar-temperature-data/static/media/skylar_capital_management.9dd16507.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fd42d5ea.js",
+    "static/js/2.dec6ffb0.chunk.js",
+    "static/css/main.8d15c66d.chunk.css",
+    "static/js/main.d106deab.chunk.js"
+  ]
+}
