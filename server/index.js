@@ -15,6 +15,8 @@ app.use(cors());
 // const CONNECTION_STRING = process.env.CONNECTION_STRING;
 // const SERVER_PORT = process.env.SERVER_PORT || 5000;
 
+app.use(express.static(path.join(__dirname, 'build')));
+
 app.get("/api/temperature-data/refresh", async (req, res) => {
   let process = spawn("python", ["./population_temperatures.py"]);
   process.stdout.on("data", (data) => {
