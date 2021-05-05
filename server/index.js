@@ -13,7 +13,6 @@ app.use(express.json());
 app.use(cors());
 
 // const CONNECTION_STRING = process.env.CONNECTION_STRING;
-// const SERVER_PORT = process.env.SERVER_PORT || 5000;
 
 app.use(express.static(path.join(__dirname, '../build')));
 
@@ -92,8 +91,8 @@ app.get("/api/temperature-data", async (req, res) => {
   return res.status(200).send(jsonFile);
 });
 
-app.listen(5000, () => {
-  console.log(`SERVER IS RUNNING ON PORT ${5000}`);
+app.listen(SERVER_PORT || 3001, () => {
+  console.log(`SERVER IS RUNNING ON PORT ${8080}`);
 });
 
 // massive.ConnectSync(CONNECTION_STRING).then((dbInstance) => {
