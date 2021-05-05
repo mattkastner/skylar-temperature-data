@@ -1,0 +1,79 @@
+require("dotenv").config();
+
+const express = require("express");
+const cors = require("cors");
+const spawn = require("child_process").spawn;
+const fs = require("fs");
+const massive = require("massive");
+const csvtojson = require("csvtojson");
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+
+// const CONNECTION_STRING = process.env.CONNECTION_STRING;
+// const SERVER_PORT = process.env.SERVER_PORT || 5000;
+
+app.get("/api/temperature-data/refresh", async (req, res) => {
+  let process = spawn("python", ["./population_temperatures.py"]);
+  process.stdout.on("data", (data) => {
+    let jsonFile = fs.readFileSync("cities_population_adjusted.json", "utf8");
+    jsonFile = JSON.parse(jsonFile);
+    console.log("ALL -- refresh");
+    return res.status(200).send(jsonFile);
+  });
+});
+
+app.get("/api/temperature-data/locations", async (req, res) => {
+  let jsonFile = fs.readFileSync("city_locations.json", "utf8");
+  jsonFile = JSON.parse(jsonFile);
+  console.log("locations");
+  return res.status(200).send(jsonFile);
+});
+
+app.put("/api/temperature-data/seasonal", (req, res) => {
+  console.log(req.body.name);
+
+  let jsonFile = fs.readFileSync("./cities_seasonal.json", "utf8");
+  jsonFile = JSON.parse(jsonFile);
+  console.log("seasonal");
+  let finalData = jsonFile.data.filter((row) => row.name === req.body.name);
+  return res.status(200).send(finalData);
+});
+
+app.put("/api/temperature-data/missing", async (req, res) => {
+  console.log(req.body.name);
+
+  let jsonFile = fs.readFileSync("./projected_temps.json", "utf8");
+  jsonFile = JSON.parse(jsonFile);
+  console.log("missing");
+  let finalData = jsonFile.data.filter((row) => row.name === req.body.name);
+  return res.status(200).send(finalData);
+});
+
+app.put("/api/temperature-data/monthly", async (req, res) => {
+  console.log(req.body.name);
+
+  let jsonFile = fs.readFileSync("./monthly_temperatures.json", "utf8");
+  jsonFile = JSON.parse(jsonFile);
+  let finalData = jsonFile.data.filter((row) => row.name === req.body.name);
+  return res.status(200).send(finalData);
+});
+
+app.get("/api/temperature-data", async (req, res) => {
+  let jsonFile = fs.readFileSync("cities_population_adjusted.json", "utf8");
+  jsonFile = JSON.parse(jsonFile);
+  console.log("ALL");
+  return res.status(200).send(jsonFile);
+});
+
+app.listen(5000, () => {
+  console.log(`SERVER IS RUNNING ON PORT ${5000}`);
+});
+
+// massive.ConnectSync(CONNECTION_STRING).then((dbInstance) => {
+//   app.set("db", dbInstance);
+//   console.log("DATABASE");
+// });
+
+module.exports = { app };

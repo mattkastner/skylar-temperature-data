@@ -1,0 +1,52 @@
+.Graph {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(128, 128, 128, 0.055);
+  padding: 20px;
+  box-sizing: border-box;
+  .waiting-spinner {
+    height: 550px;
+    width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .options {
+    z-index: 3;
+    width: 340px;
+    height: 70px;
+    border: none;
+    border-radius: 1px;
+    padding: 8px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.05);
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .input-container {
+      display: flex;
+      align-items: center;
+
+      &:active {
+        background-color: rgba(230, 230, 230, 0.308);
+        box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+      }
+      label {
+        margin-left: 8px;
+        font-size: 10px;
+      }
+      // input {
+      //   border: 1px solid red;
+      // }
+    }
+  }
+}

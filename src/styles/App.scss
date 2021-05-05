@@ -1,0 +1,85 @@
+.App {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background: rgba(168, 168, 168, 0.062);
+  .content-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    .map-wrapper {
+      box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(128, 128, 128, 0.103);
+      display: flex;
+      height: 700px;
+      width: 1200px;
+      position: relative;
+      .left-map-infomation {
+        position: relative;
+        width: 250px;
+        height: 100%;
+        background: #282828;
+        padding: 18px;
+        box-sizing: border-box;
+        .back {
+          top: 8px;
+          left: 10px;
+        }
+        .title {
+          margin-left: 50px;
+          h4 {
+            font-weight: 800;
+            font-size: 20px;
+            color: white;
+          }
+          p {
+            margin-top: 12px;
+            font-weight: 400;
+            font-size: 11px;
+            color: rgb(148, 148, 148);
+          }
+        }
+      }
+
+      .refresh-circle,
+      .back {
+        width: 36px;
+        height: 39px;
+        border: none;
+        border-radius: 1px;
+        padding: 8px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.05);
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        &:active {
+          background-color: rgba(230, 230, 230, 0.308);
+          box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+        }
+      }
+      .no-location-pin {
+        left: 10px;
+        width: 240px;
+        height: 39px;
+        padding-right: 20px;
+        padding-left: 8px;
+        border: none;
+        border-radius: 1px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.05);
+        position: absolute;
+        top: 8px;
+        right: 10px;
+      }
+    }
+  }
+}

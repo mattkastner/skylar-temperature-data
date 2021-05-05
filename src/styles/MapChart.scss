@@ -1,0 +1,42 @@
+.city-rect {
+  width: 0px;
+  height: 0px;
+  fill: white;
+  opacity: 0;
+}
+.city-rect--hover {
+  x: 0;
+  y: 0;
+  width: 120px;
+  height: 30px;
+  opacity: 1;
+  fill: white;
+  stroke: rgba(39, 39, 39, 0.05);
+  stroke-width: 5;
+  box-shadow: 0px 3px 3px rgba(39, 39, 39, 0.05);
+}
+
+.city-text {
+  opacity: 0;
+}
+
+.city-text--hover {
+  opacity: 1;
+}
+
+.city-circle {
+  fill: #d6a6a6;
+  stroke: #ca5858;
+  stroke-width: 2;
+  cursor: pointer;
+}
+.city-circle--hover {
+  fill: #d58787;
+  stroke: #cc3333;
+  stroke-width: 2;
+  z-index: 5;
+  opacity: 1;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.075);
+  cursor: pointer;
+
+}
