@@ -14,11 +14,11 @@ app.use(cors());
 
 // const CONNECTION_STRING = process.env.CONNECTION_STRING;
 
-app.use(express.static(path.join(__dirname, '../build')));
+// app.use(express.static(path.join(__dirname, '../build')));
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../build', 'index.html'));
-});
+// app.get('/', function (req, res) {
+//   res.sendFile(path.join(__dirname, '../build', 'index.html'));
+// });
 
 app.get("/api/temperature-data/refresh", async (req, res) => {
   let process = spawn("python", ["./population_temperatures.py"]);
@@ -91,7 +91,7 @@ app.get("/api/temperature-data", async (req, res) => {
   return res.status(200).send(jsonFile);
 });
 
-app.listen(SERVER_PORT || 3001, () => {
+app.listen(process.env.SERVER_PORT || 5000, () => {
   console.log(`SERVER IS RUNNING ON PORT ${8080}`);
 });
 
