@@ -15,10 +15,10 @@ app.use(cors());
 // const CONNECTION_STRING = process.env.CONNECTION_STRING;
 // const SERVER_PORT = process.env.SERVER_PORT || 5000;
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '../build')));
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
 app.get("/api/temperature-data/refresh", async (req, res) => {
