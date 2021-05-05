@@ -6,6 +6,7 @@ const spawn = require("child_process").spawn;
 const fs = require("fs");
 const massive = require("massive");
 const csvtojson = require("csvtojson");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
@@ -17,7 +18,10 @@ app.use(cors());
 app.get("/api/temperature-data/refresh", async (req, res) => {
   let process = spawn("python", ["./population_temperatures.py"]);
   process.stdout.on("data", (data) => {
-    let jsonFile = fs.readFileSync("cities_population_adjusted.json", "utf8");
+    let jsonFile = fs.readFileSync(
+      path.resolve(__dirname, "cities_population_adjusted.json"),
+      "utf8"
+    );
     jsonFile = JSON.parse(jsonFile);
     console.log("ALL -- refresh");
     return res.status(200).send(jsonFile);
@@ -25,7 +29,10 @@ app.get("/api/temperature-data/refresh", async (req, res) => {
 });
 
 app.get("/api/temperature-data/locations", async (req, res) => {
-  let jsonFile = fs.readFileSync("city_locations.json", "utf8");
+  let jsonFile = fs.readFileSync(
+    path.resolve(__dirname, "city_locations.json"),
+    "utf8"
+  );
   jsonFile = JSON.parse(jsonFile);
   console.log("locations");
   return res.status(200).send(jsonFile);
@@ -34,7 +41,10 @@ app.get("/api/temperature-data/locations", async (req, res) => {
 app.put("/api/temperature-data/seasonal", (req, res) => {
   console.log(req.body.name);
 
-  let jsonFile = fs.readFileSync("./cities_seasonal.json", "utf8");
+  let jsonFile = fs.readFileSync(
+    path.resolve(__dirname, "cities_seasonal.json"),
+    "utf8"
+  );
   jsonFile = JSON.parse(jsonFile);
   console.log("seasonal");
   let finalData = jsonFile.data.filter((row) => row.name === req.body.name);
@@ -44,7 +54,10 @@ app.put("/api/temperature-data/seasonal", (req, res) => {
 app.put("/api/temperature-data/missing", async (req, res) => {
   console.log(req.body.name);
 
-  let jsonFile = fs.readFileSync("./projected_temps.json", "utf8");
+  let jsonFile = fs.readFileSync(
+    path.resolve(__dirname, "projected_temps.json"),
+    "utf8"
+  );
   jsonFile = JSON.parse(jsonFile);
   console.log("missing");
   let finalData = jsonFile.data.filter((row) => row.name === req.body.name);
@@ -54,14 +67,20 @@ app.put("/api/temperature-data/missing", async (req, res) => {
 app.put("/api/temperature-data/monthly", async (req, res) => {
   console.log(req.body.name);
 
-  let jsonFile = fs.readFileSync("./monthly_temperatures.json", "utf8");
+  let jsonFile = fs.readFileSync(
+    path.resolve(__dirname, "monthly_temperatures.json"),
+    "utf8"
+  );
   jsonFile = JSON.parse(jsonFile);
   let finalData = jsonFile.data.filter((row) => row.name === req.body.name);
   return res.status(200).send(finalData);
 });
 
 app.get("/api/temperature-data", async (req, res) => {
-  let jsonFile = fs.readFileSync("cities_population_adjusted.json", "utf8");
+  let jsonFile = fs.readFileSync(
+    path.resolve(__dirname, "cities_population_adjusted.json"),
+    "utf8"
+  );
   jsonFile = JSON.parse(jsonFile);
   console.log("ALL");
   return res.status(200).send(jsonFile);
