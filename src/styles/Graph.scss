@@ -103,10 +103,14 @@
     cursor: pointer;
   }
   .view---text {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     position: absolute;
     right: 0;
     top: 0;
     z-index: 3;
+    width: 100px;
     padding: 7px;
     border-bottom-left-radius: 2px;
     background: white;

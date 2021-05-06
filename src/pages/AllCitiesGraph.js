@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import mapImage from "../map-image.png";
 import "../styles/Graph.scss";
+import { ArrowRight } from "react-feather";
 
 // import PulseLoader from "react-spinners/PulseLoader";
 // import axios from "axios";
@@ -156,7 +157,10 @@ class Graph extends Component {
             src={mapImage}
             className="view-map"
           />
-          <p className="view---text">View map</p>
+          <p className="view---text">
+            View map
+            <ArrowRight size={20} />
+          </p>
         </div>
       </div>
     );
