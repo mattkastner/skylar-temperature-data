@@ -53,7 +53,7 @@ export function selectCity(name) {
 
 //reducer
 export default function reducer(state = initialState, action) {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case LOAD_DATA:
       let allCitiesData = {};

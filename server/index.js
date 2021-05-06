@@ -28,7 +28,7 @@ app.get("/api/temperature-data/refresh", async (req, res) => {
       "utf8"
     );
     jsonFile = JSON.parse(jsonFile);
-    console.log("ALL -- refresh");
+    // // console.log("ALL -- refresh");
     return res.status(200).send(jsonFile);
   });
 });
@@ -39,12 +39,12 @@ app.get("/api/temperature-data/locations", async (req, res) => {
     "utf8"
   );
   jsonFile = JSON.parse(jsonFile);
-  console.log("locations");
+  // // console.log("locations");
   return res.status(200).send(jsonFile);
 });
 
 app.put("/api/temperature-data/seasonal", (req, res) => {
-  console.log(req.body.name);
+  // console.log(req.body.name);
 
   let jsonFile = fs.readFileSync(
     path.resolve(__dirname, "cities_seasonal.json"),
@@ -52,12 +52,12 @@ app.put("/api/temperature-data/seasonal", (req, res) => {
   );
 
   let finalData = JSON.parse(jsonFile);
-  console.log("seasonal");
+  // console.log("seasonal");
   if (req.body.name) {
-    console.log(req.body.name);
+    // console.log(req.body.name);
     finalData = finalData.data.filter((row) => row.name === req.body.name);
   } else {
-    console.log("nopd=e");
+    // console.log("nopd=e");
     cities = {};
 
     finalData.data.forEach((row) => {
@@ -111,7 +111,7 @@ app.put("/api/temperature-data/seasonal", (req, res) => {
         },
       ],
     };
-    console.log("here",overallData.data)
+    // console.log("here",overallData.data)
     overallData.data.forEach((row) => {
       cities.Seasonal.dates.push(row.location_date);
 
@@ -122,19 +122,19 @@ app.put("/api/temperature-data/seasonal", (req, res) => {
 
     finalData = cities;
   }
-  console.log(req.body.name);
+  // console.log(req.body.name);
   return res.status(200).send(finalData);
 });
 
 app.put("/api/temperature-data/missing", async (req, res) => {
-  console.log(req.body.name);
+  // console.log(req.body.name);
 
   let jsonFile = fs.readFileSync(
     path.resolve(__dirname, "projected_temps.json"),
     "utf8"
   );
   let finalData = JSON.parse(jsonFile);
-  console.log("missing");
+  // console.log("missing");
   if (req.body.name) {
     finalData = finalData.data.filter((row) => row.name === req.body.name);
   } else {
@@ -145,25 +145,25 @@ app.put("/api/temperature-data/missing", async (req, res) => {
           // cities[row.name].points.push(row.projected);
           cities[row.name].xaxis.push({
             x: row.location_date,
-            borderColor: "#775DD0",
+            borderColor: "#cc8033",
             label: {
               style: {
-                color: "#fff",
+                color: "cc8033",
               },
               // text: 'X-axis annotation - 22 Nov'
             },
           });
-          cities[row.name].points.push({
-            x: row.location_date,
-            y: row.temp_min_c,
+          cities[row.name].points[0].push({
+            x: new Date(row.location_date).getTime(),
+            y: row.temp_max_c,
             marker: {
               size: 5,
               fillColor: "#cc8033",
               strokeColor: "#d18d47",
-              radius: 5,
+              radius: 8,
             },
           });
-          cities[row.name].points.push({
+          cities[row.name].points[1].push({
             x: new Date(row.location_date).getTime(),
             y: row.temp_mean_c,
             marker: {
@@ -173,14 +173,14 @@ app.put("/api/temperature-data/missing", async (req, res) => {
               radius: 5,
             },
           });
-          cities[row.name].points.push({
-            x: new Date(row.location_date).getTime(),
-            y: row.temp_max_c,
+          cities[row.name].points[2].push({
+            x: row.location_date,
+            y: row.temp_min_c,
             marker: {
               size: 5,
               fillColor: "#cc8033",
               strokeColor: "#d18d47",
-              radius: 8,
+              radius: 5,
             },
           });
         }
@@ -194,7 +194,7 @@ app.put("/api/temperature-data/missing", async (req, res) => {
         cities[row.name] = {
           name: row.name,
           dates: [row.location_date],
-          points: [],
+          points: [[],[],[]],
           xaxis: [],
           series: [
             {
@@ -216,25 +216,25 @@ app.put("/api/temperature-data/missing", async (req, res) => {
           // cities[row.name].points.push(row.projected);
           cities[row.name].xaxis.push({
             x: row.location_date,
-            borderColor: "#775DD0",
+            borderColor: "#cc8033",
             label: {
               style: {
-                color: "#fff",
+                color: "#cc8033",
               },
-              text: "X-axis annotation - 22 Nov",
+              // text: "X-axis annotation - 22 Nov",
             },
           });
-          cities[row.name].points.push({
-            x: row.location_date,
-            y: row.temp_min_c,
+          cities[row.name].points[0].push({
+            x: new Date(row.location_date).getTime(),
+            y: row.temp_max_c,
             marker: {
               size: 5,
               fillColor: "#cc8033",
               strokeColor: "#d18d47",
-              radius: 5,
+              radius: 8,
             },
           });
-          cities[row.name].points.push({
+          cities[row.name].points[1].push({
             x: new Date(row.location_date).getTime(),
             y: row.temp_mean_c,
             marker: {
@@ -244,14 +244,14 @@ app.put("/api/temperature-data/missing", async (req, res) => {
               radius: 5,
             },
           });
-          cities[row.name].points.push({
-            x: new Date(row.location_date).getTime(),
-            y: row.temp_max_c,
+          cities[row.name].points[2].push({
+            x: row.location_date,
+            y: row.temp_min_c,
             marker: {
               size: 5,
               fillColor: "#cc8033",
               strokeColor: "#d18d47",
-              radius: 8,
+              radius: 5,
             },
           });
         }
@@ -263,20 +263,20 @@ app.put("/api/temperature-data/missing", async (req, res) => {
 });
 
 app.put("/api/temperature-data/monthly", async (req, res) => {
-  console.log(req.body.name);
+  // console.log(req.body.name);
 
   let jsonFile = fs.readFileSync(
     path.resolve(__dirname, "monthly_temperatures.json"),
     "utf8"
   );
   let finalData = JSON.parse(jsonFile);
-  console.log("monthly");
+  // console.log("monthly");
   if (req.body.name) {
     finalData = finalData.data.filter((row) => row.name === req.body.name);
-    console.log("monthly23");
+    // console.log("monthly23");
   } else {
     cities = {};
-    console.log("monthly2");
+    // console.log("monthly2");
 
     finalData.data.forEach((row) => {
       if (cities[row.name] != undefined) {
@@ -317,18 +317,18 @@ app.get("/api/temperature-data", async (req, res) => {
     "utf8"
   );
   let finalData = JSON.parse(jsonFile);
-  console.log("all");
+  // console.log("all");
 
   return res.status(200).send(finalData.data);
 });
 
 app.listen(process.env.SERVER_PORT || 5000, () => {
-  console.log(`SERVER IS RUNNING ON PORT ${5000}`);
+  // console.log(`SERVER IS RUNNING ON PORT ${5000}`);
 });
 
 // massive.ConnectSync(CONNECTION_STRING).then((dbInstance) => {
 //   app.set("db", dbInstance);
-//   console.log("DATABASE");
+//   // console.log("DATABASE");
 // });
 
 module.exports = { app };

@@ -128,7 +128,7 @@ class MinMaxAvgChart extends Component {
     });
     let response = await axios.put(`/api/temperature-data/seasonal`);
     response = response.data;
-    // console.log(response);
+    // // console.log(response);
 
     this.setState({
       cities: response,
@@ -144,15 +144,15 @@ class MinMaxAvgChart extends Component {
     let dates = [];
     let series = [];
 
-    // console.log(this.state.cities);
+    // // console.log(this.state.cities);
     for (let city in this.state.cities) {
       this.state.cities[city].dates.forEach((row) => {
-        // console.log(row);
+        // // console.log(row);
         dates.push(moment(row).format("MM-YY"));
       });
       break;
     }
-    // console.log(dates);
+    // // console.log(dates);
 
     for (let city in this.state.cities) {
       if (this.props.tempType === "max") {
@@ -166,7 +166,7 @@ class MinMaxAvgChart extends Component {
       }
     }
 
-    // console.log(series);
+    // // console.log(series);
 
     let options = {
       ...this.state.options,

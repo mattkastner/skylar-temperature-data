@@ -75,7 +75,7 @@ class SeasonalChart extends Component {
     });
     let response = await axios.put(`/api/temperature-data/seasonal`, { name });
     response = response.data;
-    console.log(response);
+    // console.log(response);
     this.setState({
       temps: response,
       waiting: false,

@@ -39,7 +39,7 @@ class MapChart extends Component {
     let locations = response.data.data;
 
     let unmarkedLocations = [];
-    console.log(locations);
+    // console.log(locations);
     unmarkedLocations = locations.filter((city) => !city.Lat);
     locations = locations.map((city) => {
       return {
@@ -48,7 +48,7 @@ class MapChart extends Component {
         coordinates: [city.Lon, city.Lat],
       };
     });
-    // console.log(unmarkedLocations);
+    // // console.log(unmarkedLocations);
     this.setState({ locations, unmarkedLocations });
     this.setState({ waiting: false });
   };
@@ -93,7 +93,7 @@ class MapChart extends Component {
               ))}
             </select>
             <button
-              onClick={() =>  this.props.history.push("/")}
+              onClick={() => this.props.history.push("/")}
               className="return-to-all"
             >
               <ArrowLeft color="#2BC6CB" size={20} />

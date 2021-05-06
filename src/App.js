@@ -25,7 +25,7 @@ class App extends Component {
 
   refreshData = async () => {
     let response = await axios.get("/api/temperature-data");
-    // console.log(response.data.data);
+    // // console.log(response.data.data);
     let cities = {};
     response.data.data.forEach((row) => {
       if (cities[row.name] !== undefined) {
@@ -34,7 +34,7 @@ class App extends Component {
         cities[row.name] = [row];
       }
     });
-    console.log(cities)
+    // console.log(cities)
   };
 
   render() {

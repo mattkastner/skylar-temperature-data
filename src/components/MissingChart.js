@@ -89,7 +89,7 @@ class MissingChart extends Component {
     });
     let response = await axios.put(`/api/temperature-data/missing`, { name });
     response = response.data;
-    console.log(response);
+    // console.log(response);
     this.setState({
       temps: response,
       waiting: false,
@@ -106,7 +106,7 @@ class MissingChart extends Component {
     let lows = [];
 
     let points = [];
-    console.log(temps);
+    // console.log(temps);
     temps.forEach((row) => {
       dates.push(moment(row.location_date).format("l"));
 
@@ -114,7 +114,7 @@ class MissingChart extends Component {
       avgs.push(row.temp_mean_c);
       lows.push(row.temp_min_c);
       if (row.projected) {
-        console.log("projecting");
+        // console.log("projecting");
         points.push({
           x: new Date(row.location_date).getTime(),
           y: row.temp_min_c,

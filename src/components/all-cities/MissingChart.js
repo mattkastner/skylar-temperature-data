@@ -110,7 +110,7 @@ class MinMaxAvgChart extends Component {
         yaxis: {
           labels: {
             formatter: function (val) {
-              return val.toFixed(0) + "°C";
+              return val.toFixed(3) + "°C";
             },
           },
         },
@@ -129,8 +129,26 @@ class MinMaxAvgChart extends Component {
     let points = [];
     let xaxis = [];
     for (let city in cities) {
-      cities[city].points.forEach((row) => {
+      cities[city].dates.forEach((row) => {
+        dates.push(moment(row).format("l"));
+      });
+      break;
+    }
+
+    for (let city in cities) {
+      let tempType = 0;
+      if (this.props.tempType == "min") {
+        tempType = 0;
+      }
+      if (this.props.tempType == "mean") {
+        tempType = 1;
+      }
+      if (this.props.tempType == "max") {
+        tempType = 2;
+      }
+      cities[city].points[tempType].forEach((row) => {
         let date = new Date(row.x).getTime();
+        // // console.log(cities[city].name, row)
         points.push({
           ...row,
           x: date,
@@ -143,10 +161,6 @@ class MinMaxAvgChart extends Component {
           x: date,
         });
       });
-      cities[city].dates.forEach((row) => {
-        dates.push(moment(row).format("l"));
-      });
-      break;
     }
 
     for (let city in cities) {
@@ -160,7 +174,6 @@ class MinMaxAvgChart extends Component {
         series.push(cities[city].series[2]);
       }
     }
-
 
     // let options = {
     //   ...this.state.options,
@@ -241,7 +254,7 @@ class MinMaxAvgChart extends Component {
       waiting: false,
     });
 
-    this.renderGraph(response)
+    this.renderGraph(response);
   };
 
   componentDidMount() {
