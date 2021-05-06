@@ -151,12 +151,11 @@ class Graph extends Component {
         ) : null}
 
         {this.state.showMissing ? <MissingChart tempType={tempType} /> : null}
-        <div className="map-image--container">
-          <img
-            onClick={() => this.props.history.push("/map")}
-            src={mapImage}
-            className="view-map"
-          />
+        <div
+          onClick={() => this.props.history.push("/map")}
+          className="map-image--container"
+        >
+          <img src={mapImage} className="view-map" />
           <p className="view---text">
             View map
             <ArrowRight size={20} />
