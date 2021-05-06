@@ -49,6 +49,7 @@
         }
       }
 
+      .return-to-all,
       .refresh-circle,
       .back {
         width: 36px;
@@ -67,7 +68,7 @@
         }
       }
       .no-location-pin {
-        left: 10px;
+        left: 60px;
         width: 240px;
         height: 39px;
         padding-right: 20px;
@@ -79,6 +80,17 @@
         position: absolute;
         top: 8px;
         right: 10px;
+      }
+      .return-to-all {
+        left: 10px;
+        top: 8px;
+        width: 39px;
+        height: 39px;
+        border: none;
+        border-radius: 1px;
+        // background: rgb(255, 255, 255);
+        box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.05);
+        position: absolute;
       }
     }
   }

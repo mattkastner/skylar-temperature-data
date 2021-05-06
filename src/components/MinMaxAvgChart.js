@@ -56,7 +56,7 @@ class MinMaxAvgChart extends Component {
         yaxis: {
           labels: {
             formatter: function (val) {
-              return val.toFixed(0) + "°C";
+              return val.toFixed(3) + "°C";
             },
           },
         },
@@ -96,7 +96,7 @@ class MinMaxAvgChart extends Component {
     let lows = [];
 
     this.state.temps.forEach((row) => {
-      dates.push(moment(row.location_date).format('MM-YY'));
+      dates.push(moment(row.location_date).format("MM-YY"));
 
       highs.push(row.temp_max_c);
       avgs.push(row.temp_mean_c);

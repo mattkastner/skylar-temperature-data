@@ -67,7 +67,7 @@ class Graph extends Component {
               className="choices"
             />
             <label>
-              Compare the seasonal average as well as high and low cases
+              Seasonal average as well as high and low cases
             </label>
           </div>
           <div className="input-container">

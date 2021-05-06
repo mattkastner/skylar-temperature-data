@@ -4,7 +4,7 @@ import ReactApexChart from "react-apexcharts";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import queryString from "query-string";
-import moment from "moment"
+import moment from "moment";
 
 import PulseLoader from "react-spinners/PulseLoader";
 
@@ -56,7 +56,7 @@ class SeasonalChart extends Component {
         yaxis: {
           labels: {
             formatter: function (val) {
-              return val.toFixed(0) + "°C";
+              return val.toFixed(3) + "°C";
             },
           },
         },
@@ -75,7 +75,7 @@ class SeasonalChart extends Component {
     });
     let response = await axios.put(`/api/temperature-data/seasonal`, { name });
     response = response.data;
-
+    console.log(response);
     this.setState({
       temps: response,
       waiting: false,
@@ -96,7 +96,7 @@ class SeasonalChart extends Component {
     let lows = [];
 
     this.state.temps.forEach((row) => {
-      dates.push(moment(row.location_date).format('l'));
+      dates.push(moment(row.location_date).format("l"));
 
       highs.push(row.temp_max_c);
       seasonal.push(+row.seasonal);

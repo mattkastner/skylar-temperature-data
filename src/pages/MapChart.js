@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 import axios from "axios";
+import { ArrowLeft } from "react-feather";
 
 import "../styles/MapChart.scss";
 
@@ -36,8 +37,9 @@ class MapChart extends Component {
   getMapData = async () => {
     let response = await axios.get("/api/temperature-data/locations");
     let locations = response.data.data;
+
     let unmarkedLocations = [];
-    // console.log(locations);
+    console.log(locations);
     unmarkedLocations = locations.filter((city) => !city.Lat);
     locations = locations.map((city) => {
       return {
@@ -90,6 +92,12 @@ class MapChart extends Component {
                 </option>
               ))}
             </select>
+            <button
+              onClick={() =>  this.props.history.push("/")}
+              className="return-to-all"
+            >
+              <ArrowLeft color="#2BC6CB" size={20} />
+            </button>
             <ComposableMap
               style={{ background: "#2BC6CB", height: "100%", width: "100%" }}
               projection="geoAzimuthalEqualArea"

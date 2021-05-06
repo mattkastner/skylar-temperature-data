@@ -70,7 +70,7 @@ class MissingChart extends Component {
         yaxis: {
           labels: {
             formatter: function (val) {
-              return val.toFixed(0) + "°C";
+              return val.toFixed(3) + "°C";
             },
           },
         },
