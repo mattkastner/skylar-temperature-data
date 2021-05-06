@@ -48,7 +48,7 @@ class App extends Component {
                 <button
                   className="back"
                   disabled={this.state.waiting}
-                  onClick={() => this.props.history.push("/")}
+                  onClick={() => this.props.history.push("/map")}
                 >
                   <ArrowLeft color="#2BC6CB" size={20} />
                 </button>

@@ -33,9 +33,11 @@
     justify-content: space-evenly;
 
     .input-container {
+      input {
+        cursor: pointer;
+      }
       display: flex;
       align-items: center;
-
       &:active {
         background-color: rgba(230, 230, 230, 0.308);
         box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
@@ -50,6 +52,9 @@
     }
   }
   .temp-types {
+    input {
+      cursor: pointer;
+    }
     z-index: 3;
     width: 70px;
     height: 60px;
@@ -83,6 +88,7 @@
     }
   }
   .map-image--container {
+    cursor: pointer;
     position: absolute;
     bottom: 8px;
     right: 10px;
@@ -94,7 +100,7 @@
     border-radius: 2px;
     border: 4px solid rgb(205, 205, 205);
     object-fit: cover;
-    cursor: hover;
+    cursor: pointer;
   }
   .view---text {
     position: absolute;
@@ -106,5 +112,6 @@
     background: white;
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
     color: rgb(75, 73, 73);
+    cursor: pointer;
   }
 }

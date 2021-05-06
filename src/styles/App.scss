@@ -52,6 +52,7 @@
       .return-to-all,
       .refresh-circle,
       .back {
+        cursor: pointer;
         width: 36px;
         height: 39px;
         border: none;
@@ -68,6 +69,7 @@
         }
       }
       .no-location-pin {
+        cursor: pointer;
         left: 60px;
         width: 240px;
         height: 39px;
@@ -82,6 +84,7 @@
         right: 10px;
       }
       .return-to-all {
+        cursor: pointer;
         left: 10px;
         top: 8px;
         width: 39px;
